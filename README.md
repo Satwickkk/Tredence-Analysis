@@ -17,6 +17,13 @@ Traditional neural network pruning is a **post-training** step — you train the
 
 The network has a built-in mechanism to identify and **dynamically remove its own weakest connections during training**, by learning which weights are unnecessary through a custom `PrunableLinear` layer and a sparsity regularization loss.
 
+<img width="1494" height="496" alt="image" src="https://github.com/user-attachments/assets/793daafd-dc09-414d-ab0a-220acfa49fcc" />
+
+<img width="715" height="338" alt="image" src="https://github.com/user-attachments/assets/dd9a116c-06a5-49a6-aebe-c777b4f0ae1a" />
+<img width="687" height="302" alt="image" src="https://github.com/user-attachments/assets/c200bde3-8517-4f5c-b36e-818d8d2b5c27" />
+<img width="710" height="463" alt="image" src="https://github.com/user-attachments/assets/73673197-78cb-405b-9456-79e73cccbce9" />
+
+
 ### Key Idea
 
 Each weight in the network is associated with a learnable **gate parameter**. This gate (a scalar between 0 and 1) multiplies the weight's output. When a gate value approaches 0, the corresponding weight is effectively *pruned* from the network. The training process is incentivized to push most gates to zero — leaving only the most important connections active.
@@ -91,9 +98,9 @@ Results from training 30 epochs per lambda value on CIFAR-10:
 
 | Lambda (λ) | Test Accuracy (%) | Sparsity Level (%) |
 |-----------|------------------|--------------------|
-| `0.01` (low) | ~82% | ~5% |
-| `0.1` (medium) | ~79% | ~45% |
-| `0.5` (high) | ~70% | ~85% |
+| `0.5` (low) | ~84% | 99.7% |
+| `2.0` (medium) | ~82% | 99.84% |
+| `5.0` (high) | ~81% | 99.93% |
 
 
 
